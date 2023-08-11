@@ -7,7 +7,7 @@
 
     /*========== Colors ==========*/
     /* Change favorite color */
-    --hue-color: 229; /*Purple 250 - Green 142 - Blue 230 - Pink 340*/
+    --hue-color: 229; /*Purple 250 - Green 142 - Blue 230 - Pink 340 -215 good*/
 
     /* HSL color mode */
     --first-color: hsl(var(--hue-color), 36%, 25%);
@@ -83,7 +83,7 @@
 body.dark-theme
 {
   /* HSL color mode */
-  --first-color-second: hsl(var(--hue-color), 30%, 8%);
+  --first-color-second: hsl(var(--hue-color), 36%, 25%);
   --title-color: hsl(var(--hue-color), 8%, 95%);
   --text-color: hsl(var(--hue-color), 8%, 75%);
   --input-color: hsl(var(--hue-color), 29%, 16%);
@@ -92,7 +92,33 @@ body.dark-theme
   transition: 600ms ease-in-out;
 }
 
+/* blob */
+.blob{
+  background-image: url(./2.png);
+  width: 300px;
+  height: 300px;
+  background-size:cover;
+  -webkit-background-position: center;
+  background-position: center center;
+  /* margin: 20px; */
+  box-shadow: 0 5px 5px 5px var(--first-color);
+  animation: animate 5s ease-in-out infinite;
+  transition: all 1s ease-in-out;
+}
 
+@keyframes animate {
+  0%, 100%{
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+  50%{
+      border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+  }
+}
+
+
+
+
+/* blob */
 
 /*========== Button Dark/Light ==========*/
 .nav__btns
@@ -336,7 +362,7 @@ img {
   /* margin-right:15vw; */
   margin-right: 4rem;
   width: 200px;
-  fill: hsla(229, 34%, 27%, 1);
+  fill: var(--first-color);
 }
 
 
