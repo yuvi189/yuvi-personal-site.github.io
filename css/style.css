@@ -95,8 +95,13 @@ body.dark-theme
 /* blob */
 .blob{
   background-image: url(./2.png);
+<<<<<<< HEAD
   width: 270px;
   height: 270px;
+=======
+  width: 260px;
+  height: 260px;
+>>>>>>> c503fbee469960afaa8083ce2d9f3cf6a6404606
   background-size:cover;
   -webkit-background-position: center;
   background-position: center center;
