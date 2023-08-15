@@ -95,8 +95,8 @@ body.dark-theme
 /* blob */
 .blob{
   background-image: url(./2.png);
-  width: 300px;
-  height: 300px;
+  width: 270px;
+  height: 270px;
   background-size:cover;
   -webkit-background-position: center;
   background-position: center center;
@@ -111,7 +111,7 @@ body.dark-theme
       border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
   }
   50%{
-      border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+      border-radius: 40% 60% 70% 40% / 50% 60% 30% 60%;
   }
 }
 
