@@ -95,19 +95,14 @@ body.dark-theme
 /* blob */
 .blob{
   background-image: url(./2.png);
-<<<<<<< HEAD
   width: 270px;
   height: 270px;
-=======
-  width: 260px;
-  height: 260px;
->>>>>>> c503fbee469960afaa8083ce2d9f3cf6a6404606
   background-size:cover;
   -webkit-background-position: center;
   background-position: center center;
   /* margin: 20px; */
   box-shadow: 0 5px 5px 5px var(--first-color);
-  animation: animate 5s ease-in-out infinite;
+  animation: animate 8s ease-in-out infinite;
   transition: all 1s ease-in-out;
 }
 
@@ -889,7 +884,7 @@ img {
 .thanks__image img
 {
   width: 230px;
-  animation: floaty 1.8s infinite alternate;
+  animation: floaty 2.3s infinite alternate;
 }
 .thanks__image
 {
@@ -905,7 +900,7 @@ img {
   background-color: hsla(38,21%,19%,.16);
   border-radius: 50%;
   filter: blur(7px);
-  animation: shadow 1.8s infinite alternate;
+  animation: shadow 2.3s infinite alternate;
 }
 
 @keyframes floaty
