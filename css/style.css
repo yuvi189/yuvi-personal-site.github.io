@@ -121,10 +121,47 @@ body.dark-theme
 /* blob */
 
 /*========== Button Dark/Light ==========*/
-.nav__btns
-{
+/* Ensure the parent container does not affect the vertical alignment */
+.nav__btns {
   display: flex;
-  align-items: center;
+  align-items: center; /* Ensures all children are vertically centered */
+}
+
+.theme-toggle {
+  position: relative;
+  margin-bottom: 6px;
+  width: 24px; /* Adjust the width based on your icon size */
+  height: 24px; /* Adjust the height based on your icon size */
+  display: inline-flex; /* Make sure it's inline with other elements */
+  align-items: center; /* Center the icons vertically within the container */
+  justify-content: center; /* Center the icons horizontally within the container */
+  vertical-align: middle; /* Ensure vertical alignment is middle */
+}
+
+#theme-button-moon,
+#theme-button-sun {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; /* Ensure icons take the full size of the container */
+  height: 100%;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  margin: 0; /* Ensure no extra margin is added */
+  padding: 0; /* Ensure no extra padding is added */
+}
+
+#theme-button-moon.hide,
+#theme-button-sun.hide {
+  opacity: 0;
+  transform: scale(0.5);
+  pointer-events: none; /* Disable pointer events to prevent clicking while hidden */
+}
+
+#theme-button-moon.show,
+#theme-button-sun.show {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto; /* Enable pointer events when shown */
 }
 
 .change-theme

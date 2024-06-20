@@ -1,40 +1,4 @@
-/*==================== MENU SHOW Y HIDDEN ====================*/
-const navMenu = document.getElementById('nav-menu'),
-    navToggle= document.getElementById('nav-toggle'),
-    navClose= document.getElementById('nav-close')
 
-
-/*===== MENU SHOW =====*/
-/* Validate if constant exists */
-if(navToggle)
-{
-    navToggle.addEventListener
-    ('click',() =>
-    {
-        navMenu.classList.add('show-menu')
-    })
-}
-
-/*===== MENU HIDDEN =====*/
-/* Validate if constant exists */
-if(navClose)
-{
-    navClose.addEventListener('click',()=>
-    {
-        navMenu.classList.remove('show-menu')
-    })
-}
-
-
-/*==================== REMOVE MENU MOBILE ====================*/
-const navLink = document.querySelectorAll('.nav__link')
-
-function linkAction(){
-    const navMenu = document.getElementById('nav-menu')
-    // When we click on each nav__link, we remove the show-menu class
-    navMenu.classList.remove('show-menu')
-}
-navLink.forEach(n => n.addEventListener('click', linkAction))
 
 
 
@@ -95,35 +59,96 @@ let swiperProject = new Swiper(".project__container", {
 
 
 /*==================== DARK LIGHT THEME ====================*/ 
-const themeButton = document.getElementById('theme-button')
-const darkTheme = 'dark-theme'
-const iconTheme = 'bx-sun'
+const themeButtonMoon = document.getElementById('theme-button-moon');
+const themeButtonSun = document.getElementById('theme-button-sun');
+const darkTheme = 'dark-theme';
 
-// Previously selected topic (if user selected)
-const selectedTheme = localStorage.getItem('selected-theme')
-const selectedIcon = localStorage.getItem('selected-icon')
+// Function to toggle theme and icons
+const toggleTheme = () => {
+    // Toggle the dark theme class on the body
+    document.body.classList.toggle(darkTheme);
 
-// We obtain the current theme that the interface has by validating the dark-theme class
-const getCurrentTheme = () => document.body.classList.contains(darkTheme) ? 'dark' : 'light'
-const getCurrentIcon = () => themeButton.classList.contains(iconTheme) ? 'bx-moon' : 'bx-sun'
+    // Check if body now has dark-theme class
+    const isDarkMode = document.body.classList.contains(darkTheme);
 
-// We validate if the user previously chose a topic
-if (selectedTheme) {
-  // If the validation is fulfilled, we ask what the issue was to know if we activated or deactivated the dark
-  document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](darkTheme)
-  themeButton.classList[selectedIcon === 'bx-moon' ? 'add' : 'remove'](iconTheme)
+    // Toggle visibility of moon and sun icons based on dark mode state
+    if (isDarkMode) {
+        themeButtonMoon.classList.add('hide'); // Moon hidden in dark mode
+        themeButtonSun.classList.remove('hide'); // Sun visible in dark mode
+    } else {
+        themeButtonMoon.classList.remove('hide'); // Moon visible in light mode
+        themeButtonSun.classList.add('hide'); // Sun hidden in light mode
+    }
+
+    // Save the theme the user chose
+    localStorage.setItem('selected-theme', isDarkMode ? 'dark' : 'light');
+};
+
+// Check if there's a previously saved theme and apply it
+const savedTheme = localStorage.getItem('selected-theme');
+if (savedTheme === 'dark') {
+    document.body.classList.add(darkTheme);
+    themeButtonMoon.classList.add('hide'); // Moon hidden in dark mode
+    themeButtonSun.classList.remove('hide'); // Sun visible in dark mode
+} else {
+    document.body.classList.remove(darkTheme);
+    themeButtonMoon.classList.remove('hide'); // Moon visible in light mode
+    themeButtonSun.classList.add('hide'); // Sun hidden in light mode
 }
 
-// Activate / deactivate the theme manually with the button
-themeButton.addEventListener('click', () => {
-    // Add or remove the dark / icon theme
-    document.body.classList.toggle(darkTheme)
-    themeButton.classList.toggle(iconTheme)
-    // We save the theme and the current icon that the user chose
-    localStorage.setItem('selected-theme', getCurrentTheme())
-    localStorage.setItem('selected-icon', getCurrentIcon())
-})
+// Event listener for clicking on the moon icon
+themeButtonMoon.addEventListener('click', toggleTheme);
 
+// Event listener for clicking on the sun icon
+themeButtonSun.addEventListener('click', toggleTheme);
+
+// Mobile menu functionality
+const navToggle = document.getElementById('nav-toggle');
+const navClose = document.getElementById('nav-close');
+const navMenu = document.getElementById('nav-menu');
+const navLinks = document.querySelectorAll('.nav__link');
+
+// Function to open mobile menu
+if (navToggle) {
+    navToggle.addEventListener('click', () => {
+        navMenu.classList.add('show-menu');
+        // Hide theme toggle button when mobile menu is opened
+        themeButtonMoon.classList.add('hide');
+        themeButtonSun.classList.add('hide');
+    });
+}
+
+// Function to close mobile menu
+if (navClose) {
+    navClose.addEventListener('click', () => {
+        navMenu.classList.remove('show-menu');
+        // Show theme toggle button when mobile menu is closed
+        const isDarkMode = document.body.classList.contains(darkTheme);
+        if (isDarkMode) {
+            themeButtonMoon.classList.add('hide');
+            themeButtonSun.classList.remove('hide');
+        } else {
+            themeButtonMoon.classList.remove('hide');
+            themeButtonSun.classList.add('hide');
+        }
+    });
+}
+
+// Functionality to close mobile menu when a nav link is clicked
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        navMenu.classList.remove('show-menu');
+        // Show theme toggle button when mobile menu is closed
+        const isDarkMode = document.body.classList.contains(darkTheme);
+        if (isDarkMode) {
+            themeButtonMoon.classList.add('hide');
+            themeButtonSun.classList.remove('hide');
+        } else {
+            themeButtonMoon.classList.remove('hide');
+            themeButtonSun.classList.add('hide');
+        }
+    });
+});
 
 
 /*====================  SCROLL reveal ====================*/
