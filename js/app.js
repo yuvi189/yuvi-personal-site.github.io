@@ -75,8 +75,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelectorAll('.nav__link');
     let isScrolling = false;
 
+    // Debounce function to prevent rapid execution
+    function debounce(func, wait = 20, immediate = true) {
+        let timeout;
+        return function () {
+            const context = this, args = arguments;
+            const later = function () {
+                timeout = null;
+                if (!immediate) func.apply(context, args);
+            };
+            const callNow = immediate && !timeout;
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+            if (callNow) func.apply(context, args);
+        };
+    }
+
     // Intersection Observer for sections
-    const observer = new IntersectionObserver((entries) => {
+    const observer = new IntersectionObserver(debounce((entries) => {
         if (isScrolling) return; // Skip observer updates during manual navigation
 
         entries.forEach(entry => {
@@ -90,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         });
-    }, { threshold: 0.5 }); // Adjusted threshold for better accuracy
+    }), { threshold: 0.5 }); // Single threshold value for better accuracy
 
     sections.forEach(section => {
         observer.observe(section);
@@ -118,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Allow intersection observer to re-enable after scrolling ends
             setTimeout(() => {
                 isScrolling = false;
-            }, 1000); // Adjust timeout based on scroll duration
+            }, 500); // Adjust timeout based on scroll duration
         });
     });
 
@@ -143,7 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Extra observer for qualification subsections
-    const qualificationObserver = new IntersectionObserver((entries) => {
+    const qualificationObserver = new IntersectionObserver(debounce((entries) => {
         entries.forEach(entry => {
             if (isScrolling) return; // Skip observer updates during manual navigation
 
@@ -157,13 +173,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         });
-    }, { threshold: 0.5 });
+    }), { threshold: 0.5 });
 
     const qualificationSubSections = document.querySelectorAll('#qualification [data-content]');
     qualificationSubSections.forEach(subSection => {
         qualificationObserver.observe(subSection);
     });
 });
+
 
 
 /*==================== CHANGE BACKGROUND HEADER ====================*/ 
