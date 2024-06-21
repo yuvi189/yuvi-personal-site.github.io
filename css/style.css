@@ -220,7 +220,7 @@ img {
 .section {
   padding: 2rem 0 4rem;
   min-height: 100vh; /* Ensure each section takes up full viewport height */
-  padding: 20px;     /* Add some padding for content */
+  /* padding: 20px;     Add some padding for content */
   box-sizing: border-box;
 }
 
