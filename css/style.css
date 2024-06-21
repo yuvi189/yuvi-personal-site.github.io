@@ -691,141 +691,125 @@ img {
   transform: scale(1);
 }
 
-/*==================== PROJECTS ====================*/
-
-
-.project__container
-{
+/* -----------------------Projects--------------------- */
+.project__container {
   overflow: initial;
+  position: relative;
+  padding: 0 40px; /* Ensure buttons are not overlapping content */
 }
-.project__content
-{
+
+.project__content {
   display: grid;
   justify-content: center;
   justify-self: center;
 }
 
-.project__img
-{
+.project__img {
   width: 280px;
   border-radius: 1rem;
   margin-bottom: 1.25rem;
-  transition: .4s;
+  transition: 0.4s;
 }
 
-.project__img:hover
-{
+.project__img:hover {
   transform: scale(0.9);
 }
 
-.project__title
-{
+.project__title {
   font-size: var(--h2-font-size);
   margin-bottom: 0.25rem;
-  /* margin: .5rem 0 1.25rem; */
 }
 
-.project__subtitle
-{
+.project__subtitle {
   font-size: var(--small-font-size);
   color: var(--text-color);
 }
 
-.project__button
-{
+.project__button {
   display: inline-flex;
   align-items: center;
-  column-gap: .5rem;
+  column-gap: 0.5rem;
   color: var(--text-color);
   font-size: var(--small-font-size);
 }
 
-
-.project__button i
-{
+.project__button i {
   font-size: 1rem;
-  transition: transform .3s;
+  transition: transform 0.3s;
 }
 
-.project__button:hover i
-{
-  transform: translateX(.25rem);
+.project__button:hover i {
+  transform: translateX(0.25rem);
 }
 
-/* .project__container .swiper-button-prev::after,
-.project__container .swiper-button-next::after
-{
+.container .swiper-button-prev::after,
+.container .swiper-button-next::after {
   content: '';
 }
-.project__container .swiper-button-prev,
-.project__container .swiper-button-next
-{
+
+.container .swiper-button-prev,
+.container .swiper-button-next {
   width: initial;
   height: initial;
   margin: initial;
   font-size: 2.5rem;
   color: var(--title-color);
-} */
-
-.container .swiper-button-prev::after,
-.container .swiper-button-next::after
-{
-  content: '';
+  top: 25%; /* Adjust this line to move arrows up/down */
+  transform: translateY(-50%);
 }
+
+.container .swiper-button-prev {
+  left: 10px; /* Adjust spacing as needed */
+}
+
+.container .swiper-button-next {
+  right: 10px; /* Adjust spacing as needed */
+}
+
+/* Adjust arrow positions for mobile view */
+@media only screen and (max-width: 600px) 
+{
 .container .swiper-button-prev,
 .container .swiper-button-next
 {
-  width: initial;
-  height: initial;
-  margin: initial;
-  font-size: 2.5rem;
-  color: var(--title-color);
+  top: 25%;
+}
+  .project__container {
+    padding: 0 40px; /* Reduced padding for mobile view */
+  }
+
+  .container .swiper-button-prev {
+    left: 5px; /* Adjust spacing as needed */
+  }
+
+  .container .swiper-button-next {
+    right: 5px; /* Adjust spacing as needed */
+  }
 }
 
-/* .project__container .swiper-button-prev
-{
-  left: -1rem;
-  top: 4.5rem;
-}
-.project__container .swiper-button-next
-{
-  right: -1rem;
-  top: 4.5rem;
-} */
-
-.container .swiper-button-prev
-{
-  left: -.7rem;
-  top: 4.5rem;
-}
-.container .swiper-button-next
-{
-  right: -.7rem;
-  top: 4.5rem;
-}
-
-.project__container .swiper-slide
-{
+.project__container .swiper-slide {
   margin-bottom: 4.5rem;
 }
-.container .swiper-pagination-bullets
-{
+
+.container .swiper-pagination-bullets {
   bottom: 0;
 }
-.container .swiper-pagination-bullet
-{
+
+.container .swiper-pagination-bullet {
   background-color: var(--text-color-light);
   opacity: initial;
 }
-.container .swiper-pagination-bullet-active
-{
+
+.container .swiper-pagination-bullet-active {
   background-color: var(--title-color);
   opacity: initial;
 }
-.smth
-{
+
+.smth {
   justify-self: center;
 }
+
+
 
 /*==================== Hobbies ====================*/
 .Hobbies {
@@ -1264,6 +1248,7 @@ img {
   .project__content
   {
     align-items: center;
+    width: calc(50% - 20px);
   }
 
   .footer__container

@@ -27,26 +27,45 @@ tabs.forEach(tab=>{
 
 /*====================  SWIPER  ====================*/
 
-let swiperProject = new Swiper(".project__container", {
-    loop: true,
-    cssMode: true,
-    spaceBetween: 24,
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-    pagination: {
-      el: ".swiper-pagination",
-    },
-    mousewheel: true,
-    keyboard: true,
-    breakpoints: {
-        1200: {
-          slidesPerView: 2,
-          spaceBetween: 54,
+document.addEventListener('DOMContentLoaded', function () {
+    var swiper = new Swiper('.project__container', {
+        slidesPerView: 1, // Initially set to 1 for mobile view
+        spaceBetween: 20, // Adjust spacing between slides
+        loop: true, // Optional: loop slides if needed
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
         },
-    },
-  });
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        breakpoints: {
+            768: {
+                slidesPerView: 2, // Show 2 slides on desktop (768px and above)
+            },
+        },
+    });
+
+    // Optional: Add event listeners for navigation buttons
+    var prevButton = document.querySelector('.swiper-button-prev');
+    var nextButton = document.querySelector('.swiper-button-next');
+
+    prevButton.addEventListener('click', function () {
+        swiper.slidePrev();
+    });
+
+    nextButton.addEventListener('click', function () {
+        swiper.slideNext();
+    });
+
+    // Optional: Add event listener for slide change
+    swiper.on('slideChange', function () {
+        // Add your logic here if needed
+    });
+});
+
+
 /*==================== TESTIMONIAL ====================*/
 
 
