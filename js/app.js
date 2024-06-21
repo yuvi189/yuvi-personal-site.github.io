@@ -51,6 +51,100 @@ let swiperProject = new Swiper(".project__container", {
 
 
 /*==================== SCROLL SECTIONS ACTIVE LINK ====================*/
+document.addEventListener('DOMContentLoaded', () => {
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav__link');
+    let isScrolling = false;
+
+    // Intersection Observer for sections
+    const observer = new IntersectionObserver((entries) => {
+        if (isScrolling) return; // Skip observer updates during manual navigation
+
+        entries.forEach(entry => {
+            const id = entry.target.getAttribute('id');
+            const navLink = document.querySelector(`.nav__link[href="#${id}"]`);
+
+            if (entry.isIntersecting) {
+                navLinks.forEach(link => link.classList.remove('active'));
+                if (navLink) {
+                    navLink.classList.add('active');
+                }
+            }
+        });
+    }, { threshold: 0.5 }); // Adjusted threshold for better accuracy
+
+    sections.forEach(section => {
+        observer.observe(section);
+    });
+
+    // Handle click events on nav links
+    navLinks.forEach(link => {
+        link.addEventListener('click', (event) => {
+            event.preventDefault();
+            isScrolling = true;
+
+            const targetId = link.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            const offsetTop = targetElement.offsetTop;
+
+            window.scrollTo({
+                top: offsetTop,
+                behavior: 'smooth'
+            });
+
+            // Update active link immediately
+            navLinks.forEach(link => link.classList.remove('active'));
+            link.classList.add('active');
+
+            // Allow intersection observer to re-enable after scrolling ends
+            setTimeout(() => {
+                isScrolling = false;
+            }, 1000); // Adjust timeout based on scroll duration
+        });
+    });
+
+    // Qualification tabs functionality
+    const tabs = document.querySelectorAll('[data-target]');
+    const tabContents = document.querySelectorAll('[data-content]');
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const target = document.querySelector(tab.dataset.target);
+
+            tabContents.forEach(tabContent => {
+                tabContent.classList.remove('qualification__active');
+            });
+            target.classList.add('qualification__active');
+
+            tabs.forEach(tab => {
+                tab.classList.remove('qualification__active');
+            });
+            tab.classList.add('qualification__active');
+        });
+    });
+
+    // Extra observer for qualification subsections
+    const qualificationObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (isScrolling) return; // Skip observer updates during manual navigation
+
+            const parentSection = entry.target.closest('section').getAttribute('id');
+            const navLink = document.querySelector(`.nav__link[href="#${parentSection}"]`);
+
+            if (entry.isIntersecting) {
+                navLinks.forEach(link => link.classList.remove('active'));
+                if (navLink) {
+                    navLink.classList.add('active');
+                }
+            }
+        });
+    }, { threshold: 0.5 });
+
+    const qualificationSubSections = document.querySelectorAll('#qualification [data-content]');
+    qualificationSubSections.forEach(subSection => {
+        qualificationObserver.observe(subSection);
+    });
+});
 
 
 /*==================== CHANGE BACKGROUND HEADER ====================*/ 
