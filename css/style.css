@@ -397,6 +397,20 @@ img {
   /* column-gap: 0.5 rem; */
 }
 
+@media (max-width: 768px) {
+  .home__social {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-right: 1rem; /* Adjust padding as needed */
+  }
+  
+  .home__social-link {
+    margin-right: 0; /* Remove margin-right for vertical alignment */
+    margin-bottom: 1rem; /* Add margin-bottom for spacing between icons */
+  }
+}
+
 .home__social-link
 {
   /* display: flex;
