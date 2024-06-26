@@ -191,15 +191,15 @@ document.addEventListener('DOMContentLoaded', () => {
 /*==================== DARK LIGHT THEME ====================*/ 
 const themeButtonMoon = document.getElementById('theme-button-moon');
 const themeButtonSun = document.getElementById('theme-button-sun');
-const darkThemeClass = 'dark';
+const darkTheme = 'dark-theme';
 
 // Function to toggle theme and icons
 const toggleTheme = () => {
     // Toggle the dark theme class on the body
-    document.body.classList.toggle(darkThemeClass);
+    document.body.classList.toggle(darkTheme);
 
     // Check if body now has dark-theme class
-    const isDarkMode = document.body.classList.contains(darkThemeClass);
+    const isDarkMode = document.body.classList.contains(darkTheme);
 
     // Toggle visibility of moon and sun icons based on dark mode state
     if (isDarkMode) {
@@ -217,11 +217,11 @@ const toggleTheme = () => {
 // Check if there's a previously saved theme and apply it
 const savedTheme = localStorage.getItem('selected-theme');
 if (savedTheme === 'dark') {
-    document.body.classList.add(darkThemeClass);
+    document.body.classList.add(darkTheme);
     themeButtonMoon.classList.add('hide'); // Moon hidden in dark mode
     themeButtonSun.classList.remove('hide'); // Sun visible in dark mode
 } else {
-    document.body.classList.remove(darkThemeClass);
+    document.body.classList.remove(darkTheme);
     themeButtonMoon.classList.remove('hide'); // Moon visible in light mode
     themeButtonSun.classList.add('hide'); // Sun hidden in light mode
 }
@@ -253,7 +253,7 @@ if (navClose) {
     navClose.addEventListener('click', () => {
         navMenu.classList.remove('show-menu');
         // Show theme toggle button when mobile menu is closed
-        const isDarkMode = document.body.classList.contains(darkThemeClass);
+        const isDarkMode = document.body.classList.contains(darkTheme);
         if (isDarkMode) {
             themeButtonMoon.classList.add('hide');
             themeButtonSun.classList.remove('hide');
@@ -269,7 +269,7 @@ navLinks.forEach(link => {
     link.addEventListener('click', () => {
         navMenu.classList.remove('show-menu');
         // Show theme toggle button when mobile menu is closed
-        const isDarkMode = document.body.classList.contains(darkThemeClass);
+        const isDarkMode = document.body.classList.contains(darkTheme);
         if (isDarkMode) {
             themeButtonMoon.classList.add('hide');
             themeButtonSun.classList.remove('hide');
@@ -279,7 +279,6 @@ navLinks.forEach(link => {
         }
     });
 });
-
 
 
 /*====================  SCROLL reveal ====================*/
