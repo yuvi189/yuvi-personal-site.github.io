@@ -382,7 +382,7 @@ img {
   body.dark-theme .nav__link.active {
     background-color: var(--body-color); /* Example background color */
     color: var(--title-color); /* Example text color */
-    box-shadow: 0 2px 4px rgb(37, 60, 88); /* Example shadow for active state */
+    box-shadow: 0 2px 4px rgb(53, 69, 89); /* Example shadow for active state */
     transition: box-shadow 0.3s ease, color 0.3s ease;
   }
   .nav__link
