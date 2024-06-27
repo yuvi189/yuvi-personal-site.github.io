@@ -327,6 +327,7 @@ img {
   font-weight: var(--font-medium);
   position: relative;
   padding: 0.4rem 1rem;
+  transition: color 0.3s ease;
 }
 
 .nav__link:hover
@@ -340,7 +341,7 @@ img {
   background-color: var(--title-color);
   border-radius: 24px; /* Makes the button fully rounded */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
-  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for color changes */
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for color changes */
   opacity: 0.9;
 }
 
@@ -376,11 +377,13 @@ img {
   {
     background-color: var(--body-color);
     color: var(--title-color);
+    transition: box-shadow 0.3s ease, color 0.3s ease;
   }
   body.dark-theme .nav__link.active {
     background-color: var(--body-color); /* Example background color */
     color: var(--title-color); /* Example text color */
-    box-shadow: 0 2px 4px rgb(72, 72, 72); /* Example shadow for active state */
+    box-shadow: 0 2px 4px rgb(37, 60, 88); /* Example shadow for active state */
+    transition: box-shadow 0.3s ease, color 0.3s ease;
   }
   .nav__link
   {
