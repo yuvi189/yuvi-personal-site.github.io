@@ -370,7 +370,7 @@ img {
   bottom: 0;
 }
 
-@media (max-width: 768px) 
+@media screen and (max-width: 768px) 
 {
   .nav__link.active 
   {
