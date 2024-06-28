@@ -30,7 +30,7 @@ tabs.forEach(tab=>{
 document.addEventListener('DOMContentLoaded', function () {
     var swiper = new Swiper('.project__container', {
         slidesPerView: 1, // Initially set to 1 for mobile view
-        spaceBetween: 20, // Adjust spacing between slides
+        spaceBetween: 42, // Adjust spacing between slides
         loop: true, // Optional: loop slides if needed
         navigation: {
             nextEl: '.swiper-button-next',
@@ -42,7 +42,8 @@ document.addEventListener('DOMContentLoaded', function () {
         },
         breakpoints: {
             768: {
-                slidesPerView: 2, // Show 2 slides on desktop (768px and above)
+                slidesPerView: 2,
+                spaceBetween: 40, // Show 2 slides on desktop (768px and above)
             },
         },
     });
